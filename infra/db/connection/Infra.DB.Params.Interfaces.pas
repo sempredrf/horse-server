@@ -17,7 +17,11 @@ type
     function UserName() : string; overload;
     function Password() : string; overload;
     function Charset() : string; overload;
-    function VendorLib() : string; overload;
+    //function VendorLib() : string; overload;
+
+    function Pool_CleanupTimeout() : integer; overload;
+    function Pool_ExpireTimeout() : integer; overload;
+    function Pool_MaximumItems() : integer; overload;
 
     function Params() : TStrings;
   end;

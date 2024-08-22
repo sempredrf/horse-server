@@ -201,18 +201,18 @@ begin
   FParent := aParent;
   FParams := aParams;
   try
-    Log.Info('Nome da Conexão: '+FParams.ConnectionDefName);
-    Log.Info('HostName: '+FParams.HostName);
-    Log.Info('Nome da Conexão: '+FParams.ConnectionDefName);
-    Log.Info('VendorLib: '+FParams.VendorLib);
+    Log.Info('Nome da Conexão: '+ FParams.ConnectionDefName);
+    Log.Info('HostName: ' + FParams.HostName);
+    Log.Info('Database: ' + FParams.DataBase);
 
-    if (FParams.VendorLib.IsEmpty) or (not FileExists(FParams.VendorLib)) then
-      raise Exception.Create('libpq not exists in '+FParams.VendorLib);
+    if FDManager.ConnectionDefs.FindConnectionDef( FParams.ConnectionDefName ) = nil then
+      raise Exception.Create(Format('Connection <%S> not found', [FParams.ConnectionDefName]));
 
     FDConnection.Close();
-    FDConnection.ConnectionDefName := FParams.ConnectionDefName;
-
-    FDPhysPgDriverLink.VendorLib   := FParams.VendorLib;
+    FDConnection.Params.Clear();
+    FDConnection.ConnectionDefName  := FParams.ConnectionDefName;
+    FDPhysPgDriverLink.VendorLib    := EmptyStr;
+    FDPhysPgDriverLink.VendorHome   := EmptyStr;
 
     FDConnection.Connected := true;
 

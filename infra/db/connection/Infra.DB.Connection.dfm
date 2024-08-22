@@ -1,9 +1,10 @@
 object DBConnection: TDBConnection
   OldCreateOrder = False
-  Height = 339
+  Height = 233
   Width = 512
   object FDGUIxWaitCursor: TFDGUIxWaitCursor
     Provider = 'FMX'
+    ScreenCursor = gcrNone
     Left = 72
     Top = 88
   end
@@ -18,18 +19,22 @@ object DBConnection: TDBConnection
   end
   object FDPhysPgDriverLink: TFDPhysPgDriverLink
     VendorLib = 
-      'D:\Desenv\UniSystem\Delphi10_4\managerDFe\branches\dev\dlls\libp' +
-      'q.dll'
+      'D:\development\projects\delphi\teste\horse-server-main\Win32\lib' +
+      'pq.dll'
     Left = 400
     Top = 72
   end
   object FDConnection: TFDConnection
     Params.Strings = (
-      'Database=Manager_DFe'
+      'Database=orion_salto_130824'
       'User_Name=postgres'
       'Password=mastersys#258459'
-      'Server=localhost'
-      'DriverID=PG')
+      'Server=192.168.1.8'
+      'CharacterSet=UTF8'
+      'DriverID=PG'
+      'Pooled=False')
+    ConnectedStoredUsage = []
+    LoginPrompt = False
     OnError = FDConnectionError
     Left = 77
     Top = 21

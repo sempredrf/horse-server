@@ -5,6 +5,11 @@ program horseServer;
 {$R *.res}
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   System.SysUtils,
   Domain.Services.Interfaces in 'domain\services\Domain.Services.Interfaces.pas',
   Config.Interfaces in '@shared\Config.Interfaces.pas',
@@ -50,7 +55,13 @@ begin
   except
     on E: Exception do
     begin
+      Sleep(300);
+      Writeln;
+      {$IFDEF DEBUG}
       Writeln(E.ClassName, ': ', E.Message);
+      {$ENDIF}
+
+      Writeln('Press any key to close...');
       ReadLn;
     end;
   end;

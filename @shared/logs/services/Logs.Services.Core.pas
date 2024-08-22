@@ -70,6 +70,7 @@ begin
   TServiceMessage.SubscribeToMessage(TLogMessageDebug, HandleMessages);
   TServiceMessage.SubscribeToMessage(TLogMessageInfo, HandleMessages);
   TServiceMessage.SubscribeToMessage(TLogMessageWarning, HandleMessages);
+  TServiceMessage.SubscribeToMessage(TLogMessageError, HandleMessages);
 
 end;
 

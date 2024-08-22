@@ -30,6 +30,7 @@ type
   var Log : iLogServices;
 
 implementation
+
 uses
   Services.Messages;
 
